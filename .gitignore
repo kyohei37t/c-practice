@@ -1,0 +1,5 @@
+/build
+/install
+/.vscode
+/commands
+CMakeLists.txt
