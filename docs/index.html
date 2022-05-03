@@ -1,7 +1,50 @@
+<!doctype html>
+<html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="C言語,基本,文法">
+    <meta name="description" content="C言語の基本的文法">
+    <meta name="robots" content="noindex,nofollow">
+
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=c&skin=sunburst"></script>
+    <script type="text/javascript">
+        var practice0 = document.getElementById('practice0');
+        var textNode = document.createTextNode('こんにちは');
+        practice0.appendChild(textNode);
+    </script>
 </head>
 <body>
-    <h1>C PRACTICE</h1>
-    <p>test</p>
+<h1>C言語入門</h1>
+
+<h2>はじめに</h2>
+<p>
+    このページは C言語ビギナーが、友達に C言語の文法を一通り教えるために作成したものです。<br>
+    このページ内で掲載しているプログラムは、無断でコピーまたは改変して使用していただいて構いませんが、使用により発生するいかなる損失・損害について、作者は一切責任を負いません。
+</p>
+
+<h2>Hello,world!</h2>
+<p>
+    C言語の文法について触れる前に、まずは C言語で書かれた簡単なプログラムを動かしてみましょう。
+</p>
+<pre><code id="practice0" class="prettyprint">
+#include &lt;stdio.h&gt; // (1) おまじない
+
+int main(int argc, char* argv[]) {
+    printf("Hello,world!\n"); // (2) printf 関数
+    return 0;
+}
+
+</code></pre>
+<p>
+    このプログラムは、画面に "Hello,world!" という文字列を出力するだけのものです。<br>
+    (1) は画面に文字列を出力するためのおまじないのようなものだと思ってください。
+    (2) の printf関数というものを使用するために必要なので、printf関数を使用する際には忘れずに記述するようにしましょう。<br>
+    (2) の printf関数は、丸括弧の中に記述されている文字列を出力します。
+    プログラム内に文字列を記述する際は、プログラム自体の文字列と区別するために " (ダブルクォーテーション) で括ってやる必要があります。
+    また、文字列の最後に記述されている '\n' は改行を意味している。
+</p>
+
+
 </body>
+</html>
