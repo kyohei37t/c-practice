@@ -7,9 +7,11 @@
     <meta name="robots" content="noindex,nofollow">
 
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=c"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang-c"></script>
 </head>
 <body>
+<noscript>This page requires JavaScript</noscript>
+
 <h1>C言語入門</h1>
 
 <h2>はじめに</h2>
@@ -22,8 +24,10 @@
 <p>
     C言語の文法について触れる前に、まずは C言語で書かれた簡単なプログラムを動かしてみましょう。
 </p>
-<pre><code id="practice0-hello-world" class="prettyprint">
+
+<pre><code id="practice0-hello-world">
 </code></pre>
+
 <p>
     このプログラムは、画面に "Hello,world!" という文字列を出力するだけのものです。<br>
     (1) は画面に文字列を出力するためのおまじないのようなものだと思ってください。
@@ -36,37 +40,24 @@
 
 </body>
 <script type="text/javascript">
-    async function getCode(tagId) {
-        let response = await fetch("../src/" + tagId + "/main.c");
+async function getCode(tagId) {
+    let response = await fetch("https://raw.githubusercontent.com/kyohei37t/c-practice/master/src/" + tagId + "/main.c");
 
-        if (response.ok) { // HTTP ステータスが 200-299 の場合
-            // レスポンスの本文を取得(後述)
-            let text = await response.text();
-            document.getElementById(tagId).innerText = text;
-        } else {
-            alert("HTTP-Error: " + response.status);
-        }
+    if (response.ok) { // HTTP ステータスが 200-299 の場合
+        // レスポンスの本文を取得(後述)
+        let text = await response.text();
+        var lines = text.split("\n").map(function(line) {
+            return "<span>" + line.replace("<", "&lt;").replace(">", "&gt;") + "</span>\n"
+        });
+
+        var codeTag = document.getElementById(tagId);
+        codeTag.innerHTML = lines.join("");
+        codeTag.classList.add("prettyprint");
+    } else {
+        alert("HTTP-Error: " + response.status);
     }
-    // function getCode(tagId) {
-    //     var xmlhttp = new XMLHttpRequest();
+}
 
-    //     var text = "";
-    //     xmlhttp.onreadystatechange = function() {
-    //         if (xmlhttp.readyState == 4) {
-    //             if (xmlhttp.status == 200) {
-    //                 text = xmlhttp.responseText;
-    //             } else {
-    //                 text = "Load error: status = " + xmlhttp.status;
-    //             }
-    //         } else {
-    //             text = "Loadind...";
-    //         }
-    //         document.getElementById(tagId).innerText = text;
-    //     }
-    //     xmlhttp.open("GET", "../src/" + tagId + "/main.c");
-    //     xmlhttp.send();
-    // }
-
-    getCode("practice0-hello-world");
+getCode("practice0-hello-world");
 </script>
 </html>

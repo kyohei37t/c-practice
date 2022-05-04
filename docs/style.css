@@ -1,0 +1,11 @@
+.code span {
+    counter-increment: line-number;
+    display: list-item;
+    padding-left: 1rem;
+    margin-left: 1rem;
+}
+
+.code span::marker {
+    content: counter(line-number);
+    color: #aaa;
+}
