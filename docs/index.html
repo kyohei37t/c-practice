@@ -34,24 +34,27 @@
 <p>
     このプログラムは、画面に "Hello,world!" という文字列を出力するだけのものです。<br>
     (1) は画面に文字列を出力するためのおまじないのようなものだと思ってください。
-    (2) の printf関数というものを使用するために必要なので、printf関数を使用する際には忘れずに記述するようにしましょう。<br>
+    このおまじないは、(2) の printf関数というものを使用するために必要なので、printf関数を使用する際には忘れずに記述するようにしましょう。<br>
     (2) の printf関数は、丸括弧の中に記述されている文字列を出力します。
     プログラム内に文字列を記述する際は、プログラム自体の文字列と区別するために " (ダブルクォーテーション) で括ってやる必要があります。
-    また、文字列の最後に記述されている '\n' は改行を意味している。
+    ちなみに、文字列の最後に記述されている '\n' は改行を意味していて、この記述を忘れると改行が行われません。
 </p>
+
+
 
 </body>
 <script type="text/javascript">
 async function getCode(tagId) {
-    let response = await fetch("https://raw.githubusercontent.com/kyohei37t/c-practice/master/src/" + tagId + "/main.c");
+    const response = await fetch("https://raw.githubusercontent.com/kyohei37t/c-practice/master/src/" + tagId + "/main.c");
 
-    if (response.ok) { // HTTP ステータスが 200-299 の場合
-        let text = await response.text();
-        var codeTag = document.getElementById(tagId);
-        codeTag.innerText += text;
-    } else {
+    if (!response.ok) {
         alert("HTTP-Error: " + response.status);
+        return;
     }
+    // HTTP ステータスが 200-299 の場合
+    const text = await response.text();
+    const codeTag = document.getElementById(tagId);
+    codeTag.innerText = text;
 }
 
 getCode("practice0-hello-world");
