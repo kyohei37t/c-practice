@@ -7,14 +7,6 @@
 <meta name="robots" content="noindex,nofollow">
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang-c"></script>
-<style type="text/css">
-code {
-    background: #000;
-    color: #ddd;
-    font-family: monospace;
-}
-</style>
-
 </head>
 <body>
 <noscript>This page requires JavaScript</noscript>
@@ -32,8 +24,7 @@ code {
     C言語の文法について触れる前に、まずは C言語で書かれた簡単なプログラムを動かしてみましょう。
 </p>
 
-<pre><code id="practice0-hello-world">
-</code></pre>
+<pre class="prettyprint linenums" id="practice0-hello-world"></pre>
 
 <p>
     このプログラムは、画面に "Hello,world!" という文字列を出力するだけのものです。<br>
@@ -52,8 +43,7 @@ async function getCode(tagId) {
     if (response.ok) { // HTTP ステータスが 200-299 の場合
         let text = await response.text();
         var codeTag = document.getElementById(tagId);
-        codeTag.innerText = text;
-        codeTag.classList.add("prettyprint");
+        codeTag.innerText += text;
     } else {
         alert("HTTP-Error: " + response.status);
     }
