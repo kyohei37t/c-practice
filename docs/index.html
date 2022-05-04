@@ -1,13 +1,20 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="C言語,基本,文法">
-    <meta name="description" content="C言語の基本的文法">
-    <meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="keywords" content="C言語,基本,文法">
+<meta name="description" content="C言語の基本的文法">
+<meta name="robots" content="noindex,nofollow">
 
-    <link href="style.css" rel="stylesheet" type="text/css" media="all">
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang-c"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang-c"></script>
+<style type="text/css">
+code {
+    background: #000;
+    color: #ddd;
+    font-family: monospace;
+}
+</style>
+
 </head>
 <body>
 <noscript>This page requires JavaScript</noscript>
@@ -37,21 +44,15 @@
     また、文字列の最後に記述されている '\n' は改行を意味している。
 </p>
 
-
 </body>
 <script type="text/javascript">
 async function getCode(tagId) {
     let response = await fetch("https://raw.githubusercontent.com/kyohei37t/c-practice/master/src/" + tagId + "/main.c");
 
     if (response.ok) { // HTTP ステータスが 200-299 の場合
-        // レスポンスの本文を取得(後述)
         let text = await response.text();
-        var lines = text.split("\n").map(function(line) {
-            return "<span>" + line.replace("<", "&lt;").replace(">", "&gt;") + "</span>\n"
-        });
-
         var codeTag = document.getElementById(tagId);
-        codeTag.innerHTML = lines.join("");
+        codeTag.innerText = text;
         codeTag.classList.add("prettyprint");
     } else {
         alert("HTTP-Error: " + response.status);
